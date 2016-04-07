@@ -684,6 +684,9 @@
               from_date: params.from_date,
               to_date: params.to_date
           })
+          .filter(function(event) {
+            return event.name != 'Login';
+          })
           .groupByUser(function(state, events) {
               // collect the event list of each user, if they entered the funnel
               state = state || {
@@ -695,9 +698,7 @@
                       state.exit_path = [];
                       state.current_step += 1;
                   } else if (state.exit_path.length < PATH_LENGTH) {
-                      if(e.name != 'Login') {
-                        state.exit_path.push(e.name);
-                      }
+                      state.exit_path.push(e.name);
                   }
               });
       
