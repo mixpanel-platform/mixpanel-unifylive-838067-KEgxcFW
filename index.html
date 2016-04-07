@@ -375,6 +375,7 @@
             from_date: date_to_string(dateVal.from),
             to_date: date_to_string(dateVal.to),
           };
+        event_list.splice(event_list.indexOf('Login'), 1);
         var script = $('#cq').html();
         script = $.trim(script);
         
